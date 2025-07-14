@@ -1,18 +1,21 @@
 version: 2
 updates:
-  - package-ecosystem: "bundler"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-    pull-request-branch-name:
-      separator: "-"
-    groups:
-      bundler-dependencies:
-        patterns:
-          - "*"
-    registries:
-      - jfrog
-
+- package-ecosystem: bundler
+  directory: /
+  schedule:
+    interval: weekly
+  pull-request-branch-name:
+    separator: "-"
+  groups:
+    bundler-dependencies:
+      patterns:
+      - "*"
+  registries:
+  - jfrog
+  ignore:
+  - update-types:
+    - version-update:semver-major
+  - dependency-name: "*"
 registries:
   jfrog:
     type: rubygems-server
